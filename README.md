@@ -18,6 +18,8 @@ cargo install git-mix
 
 # Use
 
+## initialization
+
 1. edit the .gitattributes to set the path you want to mix as the following:
 
 ```bsah
@@ -34,8 +36,23 @@ private/* filter=git-mix
 
 3. append template to  .git/config
 
-4. remember the key, or you can reset the key which is required 32 bytes
+4. remember the key, or you can reset the key which is required 32 bytes by `git-mix genkey` or yourself
 
+5. commit the private data and push remote to checkout the mixed data:)
+
+## clone
+
+1. git clone -n giturl
+2. run `git-mix gen --key <key>` to generate the filter template
+```bash
+❯ git-mix gen --key BiqdSyKwmnIFDKg1LzXIg5eEM3RWbdUb                       127ms
+[filter = "git-mix"]
+    clean = git-mix encrypt --key BiqdSyKwmnIFDKg1LzXIg5eEM3RWbdUb
+    smudge = git-mix decrypt --key BiqdSyKwmnIFDKg1LzXIg5eEM3RWbdUb
+```
+3. append the template to .git/config
+4. git reset --hard HEAD
+5. check the private data :)
 
 Contributing
 ------------
