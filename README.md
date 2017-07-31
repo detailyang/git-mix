@@ -1,6 +1,6 @@
 # git-mix
 [![Build Status](https://travis-ci.org/detailyang/git-mix.svg?branch=master)](https://travis-ci.org/detailyang/git-mix)
-[![](https://crates.io/crates/git-mix)](https://crates.io/crates/git-mix)
+[![Release](https://img.shields.io/crates/v/git-mix.svg)](https://crates.io/crates/git-mix)
 
 git-mix is inspired by [git-crypt](https://github.com/AGWA/git-crypt) but implemented by rust.
 
