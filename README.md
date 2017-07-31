@@ -4,14 +4,15 @@
 
 git-mix is inspired by [git-crypt](https://github.com/AGWA/git-crypt) but implemented by rust.
 
-# How
+# How it works
 Based on [Git Attributes](https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes). Using the “clean” and “smudge” filters
 , we can can set a filter for particular paths before they’re checked out and staged as the following:
 
 ![clean](/docs/clean.png)
 ![smudge](/docs/smudge.png)
 
-# Install
+# How to install
+Thanks to cargo :)
 ```bash
 cargo install git-mix
 ```
