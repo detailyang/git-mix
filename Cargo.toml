@@ -11,7 +11,7 @@ license = "MIT"
 license-file = "LICENSE"
 
 [badges]
-travis-ci = { repository = "detailyang/git-mix branch = "master" }
+travis-ci = { repository = "detailyang/git-mix", branch = "master" }
 
 [dependencies]
 rust-crypto = "0.2"
