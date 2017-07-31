@@ -31,7 +31,7 @@ private/* filter=git-mix
 2. run `git-mix gen` to generate the config for defining the filter `git-mix`
 
 ```bash
-[filter = "git-mix"]
+[filter "git-mix"]
     clean = git-mix encrypt --key BiqdSyKwmnIFDKg1LzXIg5eEM3RWbdUb
     smudge = git-mix decrypt --key BiqdSyKwmnIFDKg1LzXIg5eEM3RWbdUb
 ```
@@ -48,7 +48,7 @@ private/* filter=git-mix
 2. run `git-mix gen --key <key>` to generate the filter template
 ```bash
 ❯ git-mix gen --key BiqdSyKwmnIFDKg1LzXIg5eEM3RWbdUb                       127ms
-[filter = "git-mix"]
+[filter "git-mix"]
     clean = git-mix encrypt --key BiqdSyKwmnIFDKg1LzXIg5eEM3RWbdUb
     smudge = git-mix decrypt --key BiqdSyKwmnIFDKg1LzXIg5eEM3RWbdUb
 ```
