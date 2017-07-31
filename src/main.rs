@@ -24,6 +24,7 @@ macro_rules! fatal {
     )
 }
 
+
 fn stdin() -> Vec<u8> {
     let mut stdin = io::stdin();
     let mut buf = Vec::new();
