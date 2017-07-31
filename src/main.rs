@@ -33,10 +33,10 @@ fn stdin() -> Vec<u8> {
 
 
 fn main() {
-    let app = App::new("git-mix")
+    let app = App::new(crate_name!())
         .version(crate_version!())
-        .about("Mix the git data with AES-256-ECB mode")
-        .author("detailyang <detailyang@gmail.com>")
+        .about(crate_description!())
+        .author(crate_authors!())
         .setting(AppSettings::SubcommandRequiredElseHelp)
         .subcommand(
             SubCommand::with_name("encrypt")
