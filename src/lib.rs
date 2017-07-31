@@ -167,12 +167,12 @@ mod tests {
     fn test_generate_template() {
         let key = "abcdef".to_string();
         let expect = format!(
-        "\
+            "\
 [filter = \"git-mix\"]
     clean = git-mix encrypt --key {key}
     smudge = git-mix decrypt --key {key}
 ",
-        key = key
+            key = key
         );
         let actual = gen(Some(key.as_str()));
 
