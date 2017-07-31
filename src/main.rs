@@ -28,7 +28,7 @@ fn stdin() -> Vec<u8> {
     let mut stdin = io::stdin();
     let mut buf = Vec::new();
     stdin.read_to_end(&mut buf).expect("No stdin");
-    return buf;
+    buf
 }
 
 
@@ -62,13 +62,23 @@ fn main() {
                         .help("Set the key of AES-256-ECB"),
                 ),
         )
-        .subcommand(SubCommand::with_name("genkey").about(
-            "Generate the key of AES-256-ECB",
-        ));
+        .subcommand(
+            SubCommand::with_name("gen")
+                .about("Generate .git/config template")
+                .arg(
+                    Arg::with_name("key")
+                    .short("k")
+                    .long("key")
+                    .takes_value(true)
+                    .help("Use the specified key")
+                )
+        )
+        .subcommand(
+            SubCommand::with_name("genkey")
+                .about("Generate the key of AES-256-ECB")
+        );
 
-
-    let matches = app.get_matches();
-    match matches.subcommand() {
+    match app.get_matches().subcommand() {
         ("encrypt", Some(e)) => {
             let key = e.value_of("key").expect("key requires 32 bytes");
             if key.len() != 32 {
@@ -91,6 +101,12 @@ fn main() {
                 Ok(plain) => print!("{}", plain),
                 Err(e) => fatal!("{}", e),
             }
+        }
+
+        ("gen", Some(g)) => {
+            let key = g.value_of("key");
+            let template = mix::gen(key);
+            print!("{}", template);
         }
 
         _ => {

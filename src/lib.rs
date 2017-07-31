@@ -97,6 +97,22 @@ pub fn decrypt(buf: &[u8], key: &[u8]) -> Result<String, String> {
 }
 
 
+pub fn gen(specifed: Option<&str>) -> String {
+    let key;
+
+    match specifed {
+        Some(s) => key = s.to_string(),
+        None => key = genkey(32),
+    }
+
+    format!("\
+[filter = \"git-mix\"]
+    clean = git-mix encrypt --key {key}
+    smudge = git-mix decrypt --key {key}
+", key=key)
+}
+
+
 pub fn genkey(len: usize) -> String {
     thread_rng().gen_ascii_chars().take(len).collect::<String>()
 }
