@@ -67,16 +67,15 @@ fn main() {
                 .about("Generate .git/config template")
                 .arg(
                     Arg::with_name("key")
-                    .short("k")
-                    .long("key")
-                    .takes_value(true)
-                    .help("Use the specified key")
-                )
+                        .short("k")
+                        .long("key")
+                        .takes_value(true)
+                        .help("Use the specified key"),
+                ),
         )
-        .subcommand(
-            SubCommand::with_name("genkey")
-                .about("Generate the key of AES-256-ECB")
-        );
+        .subcommand(SubCommand::with_name("genkey").about(
+            "Generate the key of AES-256-ECB",
+        ));
 
     match app.get_matches().subcommand() {
         ("encrypt", Some(e)) => {

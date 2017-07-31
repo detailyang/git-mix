@@ -105,11 +105,14 @@ pub fn gen(specifed: Option<&str>) -> String {
         None => key = genkey(32),
     }
 
-    format!("\
+    format!(
+        "\
 [filter = \"git-mix\"]
     clean = git-mix encrypt --key {key}
     smudge = git-mix decrypt --key {key}
-", key=key)
+",
+        key = key
+    )
 }
 
 
@@ -129,7 +132,7 @@ mod tests {
     }
 
     #[test]
-    fn test_encrypt_and_decrypt() {
+    fn test_simple_encrypt_and_decrypt() {
         let plain = "abcdefghijklmopqrs".as_bytes();
         let key = "EXHcE7JQDy8vSBDVTTsgg4NkCQUfgqDx".as_bytes();
         let cipher = encrypt(plain, key).unwrap();
@@ -138,9 +141,41 @@ mod tests {
     }
 
     #[test]
+    fn test_more_encrypt_and_decrypt() {
+        let mut plain;
+        let mut key;
+        let mut cipher;
+        let mut plainplain;
+
+        for _ in 0..1000 {
+            plain = genkey(1024);
+            key = genkey(32);
+            cipher = encrypt(plain.as_bytes(), key.as_bytes()).unwrap();
+            plainplain = decrypt(cipher.as_bytes(), key.as_bytes()).unwrap();
+            assert_eq!(plain, plainplain);
+        }
+    }
+
+    #[test]
     fn test_mixed_decrypt() {
         let key = "EXHcE7JQDy8vSBDVTTsgg4NkCQUfgqDx".as_bytes();
         let plain = decrypt("abcd".as_bytes(), key);
         assert_eq!(plain, Err("InvalidLength".to_string()));
+    }
+
+    #[test]
+    fn test_generate_template() {
+        let key = "abcdef".to_string();
+        let expect = format!(
+        "\
+[filter = \"git-mix\"]
+    clean = git-mix encrypt --key {key}
+    smudge = git-mix decrypt --key {key}
+",
+        key = key
+        );
+        let actual = gen(Some(key.as_str()));
+
+        assert_eq!(actual, expect);
     }
 }
