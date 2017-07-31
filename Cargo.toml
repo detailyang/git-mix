@@ -3,6 +3,11 @@ name = "git-mix"
 version = "0.1.0"
 authors = ["detailyang <detailyang@gmail.com>"]
 description = "Mix the git data with AES-256-ECB mode"
+license = "MIT"
+license-file = "LICENSE"
+
+[badges]
+travis-ci = { repository = "...", branch = "master" }
 
 [dependencies]
 rust-crypto = "0.2"
