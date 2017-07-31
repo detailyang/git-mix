@@ -8,6 +8,8 @@ git-mix is inspired by [git-crypt](https://github.com/AGWA/git-crypt) but implem
 Based on [Git Attributes](https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes). Using the “clean” and “smudge” filters
 , we can can set a filter for particular paths before they’re checked out and staged as the following:
 
+![clean](/docs/clean.png)
+![smudge](/docs/smudge.png)
 
 # Install
 ```bash
@@ -32,8 +34,8 @@ private/* filter=git-mix
 
 3. append template to  .git/config
 
-4. remember the key, or you can reset the key which is required 32 bytes 
- 
+4. remember the key, or you can reset the key which is required 32 bytes
+
 
 Contributing
 ------------
