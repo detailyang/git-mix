@@ -24,6 +24,7 @@ cargo install git-mix
 1. edit the .gitattributes to set the path you want to mix as the following:
 
 ```bsah
+.gitattributes !filter
 private/* filter=git-mix
 ```
 

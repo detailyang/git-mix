@@ -107,7 +107,7 @@ pub fn gen(specifed: Option<&str>) -> String {
 
     format!(
         "\
-[filter = \"git-mix\"]
+[filter \"git-mix\"]
     clean = git-mix encrypt --key {key}
     smudge = git-mix decrypt --key {key}
 ",

@@ -1,13 +1,12 @@
 [package]
 name = "git-mix"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["detailyang <detailyang@gmail.com>"]
 description = "Mix the git data with AES-256-ECB mode"
 documentation = "https://github.com/detailyang/git-mix"
 repository = "https://github.com/detailyang/git-mix"
 readme = "README.md"
 keywords = ["git", "mix", "clean", "smudge"]
-license = "MIT"
 license-file = "LICENSE"
 
 [badges]
