@@ -55,4 +55,16 @@ mod tests {
 
         assert_eq!(actual, expect);
     }
+
+    #[test]
+    fn test_generate_attribute() {
+        let expect = format!(
+            "\
+* filter=git-mix
+.gitattributes !filter
+"
+        );
+        let actual = mix::genattr();
+        assert_eq!(actual, expect);
+    }
 }

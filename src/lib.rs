@@ -97,6 +97,16 @@ pub fn decrypt(buf: &[u8], key: &[u8]) -> Result<String, String> {
 }
 
 
+pub fn genattr() -> String {
+    format!(
+        "\
+* filter=git-mix
+.gitattributes !filter
+"
+    )
+}
+
+
 pub fn gen(specifed: Option<&str>) -> String {
     let key;
 

@@ -74,6 +74,9 @@ fn main() {
                         .help("Use the specified key"),
                 ),
         )
+        .subcommand(SubCommand::with_name("genattr").about(
+            "Generate .gitattributes template",
+        ))
         .subcommand(SubCommand::with_name("genkey").about(
             "Generate the key of AES-256-ECB",
         ));
@@ -106,6 +109,11 @@ fn main() {
         ("gen", Some(g)) => {
             let key = g.value_of("key");
             let template = mix::gen(key);
+            print!("{}", template);
+        }
+
+        ("genattr", Some(_)) => {
+            let template = mix::genattr();
             print!("{}", template);
         }
 
