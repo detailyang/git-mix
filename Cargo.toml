@@ -1,6 +1,6 @@
 [package]
 name = "git-mix"
-version = "0.1.4"
+version = "0.1.5"
 authors = ["detailyang <detailyang@gmail.com>"]
 description = "Mix the git data with AES-256-ECB mode"
 documentation = "https://github.com/detailyang/git-mix"

@@ -35,7 +35,7 @@ fn stdin() -> Vec<u8> {
 
 fn stdout(buf: &[u8]) {
     let mut stdout = io::stdout();
-    stdout.write(buf);
+    let _ = stdout.write(buf);
 }
 
 
