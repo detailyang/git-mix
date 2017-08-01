@@ -13,8 +13,8 @@ mod tests {
         let plain = "abcdefghijklmopqrs".as_bytes();
         let key = "EXHcE7JQDy8vSBDVTTsgg4NkCQUfgqDx".as_bytes();
         let cipher = mix::encrypt(plain, key).unwrap();
-        let plainplain = mix::decrypt(cipher.as_bytes(), key).unwrap();
-        assert_eq!(plain, plainplain.as_bytes());
+        let plainplain = mix::decrypt(&cipher[..], key).unwrap();
+        assert_eq!(*plain, plainplain[..]);
     }
 
     #[test]
@@ -28,8 +28,8 @@ mod tests {
             plain = mix::genkey(1024);
             key = mix::genkey(32);
             cipher = mix::encrypt(plain.as_bytes(), key.as_bytes()).unwrap();
-            plainplain = mix::decrypt(cipher.as_bytes(), key.as_bytes()).unwrap();
-            assert_eq!(plain, plainplain);
+            plainplain = mix::decrypt(&cipher[..], key.as_bytes()).unwrap();
+            assert_eq!(*plain.as_bytes(), plainplain[..]);
         }
     }
 

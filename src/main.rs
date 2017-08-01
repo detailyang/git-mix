@@ -33,6 +33,12 @@ fn stdin() -> Vec<u8> {
 }
 
 
+fn stdout(buf: &[u8]) {
+    let mut stdout = io::stdout();
+    stdout.write(buf);
+}
+
+
 fn main() {
     let app = App::new(crate_name!())
         .version(crate_version!())
@@ -89,7 +95,7 @@ fn main() {
             }
 
             match mix::encrypt(stdin().as_slice(), key.as_bytes()) {
-                Ok(cipher) => print!("{}", cipher),
+                Ok(cipher) => stdout(&cipher[..]),
                 Err(e) => fatal!("{}", e),
             }
         }
@@ -101,7 +107,7 @@ fn main() {
             }
 
             match mix::decrypt(stdin().as_slice(), key.as_bytes()) {
-                Ok(plain) => print!("{}", plain),
+                Ok(plain) => stdout(&plain[..]),
                 Err(e) => fatal!("{}", e),
             }
         }

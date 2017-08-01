@@ -73,21 +73,20 @@ fn aes_256_ecb_decrypt(
 }
 
 
-pub fn encrypt(buf: &[u8], key: &[u8]) -> Result<String, String> {
+pub fn encrypt(buf: &[u8], key: &[u8]) -> Result<Vec<u8>, String> {
     match aes_256_ecb_encrypt(buf, key) {
-        Ok(encrypted_data) => Ok(encode(encrypted_data.as_slice())),
+        Ok(encrypted_data) => Ok(encode(encrypted_data.as_slice()).into_bytes()),
         Err(e) => Err(format!("{:?}", e)),
     }
 }
 
 
-pub fn decrypt(buf: &[u8], key: &[u8]) -> Result<String, String> {
+pub fn decrypt(buf: &[u8], key: &[u8]) -> Result<Vec<u8>, String> {
     match decode(buf) {
         Ok(encrypted_data) => {
             match aes_256_ecb_decrypt(encrypted_data.as_slice(), key) {
                 Ok(decrypted_data) => {
-                    let plain = str::from_utf8(decrypted_data.as_slice()).unwrap();
-                    Ok(plain.to_string())
+                    Ok(decrypted_data)
                 }
                 Err(e) => Err(format!("{:?}", e)),
             }
