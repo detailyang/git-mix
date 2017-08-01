@@ -85,9 +85,7 @@ pub fn decrypt(buf: &[u8], key: &[u8]) -> Result<Vec<u8>, String> {
     match decode(buf) {
         Ok(encrypted_data) => {
             match aes_256_ecb_decrypt(encrypted_data.as_slice(), key) {
-                Ok(decrypted_data) => {
-                    Ok(decrypted_data)
-                }
+                Ok(decrypted_data) => Ok(decrypted_data),
                 Err(e) => Err(format!("{:?}", e)),
             }
         }
